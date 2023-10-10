@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
+
 .btn {
   @apply text-white border-2 px-4 py-2 w-24 rounded-xl tracking-wider hover:bg-slate-200 hover:text-slate-800;
 }
