@@ -1,19 +1,21 @@
 import { createContext } from "react";
+import { GlobalState } from "../datatypes";
 
-export const initialState = {
-  language: true,
-  darkMode: true,
+export const reducer = (state, action) => {
+  switch (action.type) {
+    case "darkMode":
+      return { ...state, darkMode: !state.darkMode };
+    default:
+      return state
+  }
 };
 
-const AppContext = createContext(initialState);
+export const initialState:GlobalState = {
+  language: true,
+  darkMode: true,
+  documentation: false
+};
 
-// const reducer = (state, action) => {
-//   switch (action.type) {
-//     case "darkMode":
-//       return { ...state, language: !state.language };
-//   }
+export const AppContext = createContext(initialState)
 
-//   console.log(state);
-// };
 
-export { AppContext };
