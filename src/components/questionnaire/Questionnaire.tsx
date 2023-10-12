@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Questonary:React.FC = () => {
+const Questionnaire:React.FC = () => {
   return (
     <div>
       <h1>QUESTIONS .........</h1>
@@ -8,4 +8,4 @@ const Questonary:React.FC = () => {
   )
 }
 
-export default Questonary
+export default Questionnaire
