@@ -6,17 +6,21 @@ import { DispatchContext, StarterContext } from "../../context/context";
 
 const Header: React.FC = () => {
   const context = useContext(StarterContext);
-  const dispatch = useContext(DispatchContext)
+  const dispatch = useContext(DispatchContext);
+
+  console.log(context);
 
   return (
     <div className="flex justify-between px-4 gap-10 w-[100%]">
       <div className="flex gap-4">
         <img
+          onClick={() => dispatch({ type: "language", payload: "ENG" })}
           src={en}
           alt="english"
           className="w-8 h-8 sm:w-10 sm:h-10 rounded-full cursor-pointer"
         />
         <img
+          onClick={() => dispatch({ type: "language", payload: "ITA" })}
           src={it}
           alt="italian"
           className="w-8 h-8 sm:w-10 sm:h-10 rounded-full cursor-pointer"
