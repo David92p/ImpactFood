@@ -1,6 +1,11 @@
 import React, { useReducer } from "react";
 import { Header, Home, Questionnaire } from "..";
-import { StarterContext, DispatchContext, initialState, starterReducer } from "../../context/context";
+import {
+  StarterContext,
+  DispatchContext,
+  initialState,
+  starterReducer,
+} from "../../context/context";
 
 const Starter: React.FC = () => {
   const [state, dispatch] = useReducer(starterReducer, initialState);
@@ -15,11 +20,11 @@ const Starter: React.FC = () => {
         >
           <div
             className={`flex flex-col items-center ${
-              state.darkMode ? "text-slate-300" : "text-slate-900"
+              state?.darkMode ? "text-slate-300" : "text-slate-900"
             } sm:w-[50%] mx-4 tracking-wider"`}
           >
             <Header />
-            {state.questionnaire ? <Questionnaire/> : <Home />}
+            {state.toggleQuestionnaire ? <Questionnaire /> : <Home />}
           </div>
         </div>
       </DispatchContext.Provider>
