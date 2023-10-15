@@ -22,7 +22,7 @@ const Home: React.FC = () => {
           : "Per iniziare il test, clicca sul pulsante qui sotto."}
 
         <button
-          onClick={() => dispatch({ type: "questionnaire" })}
+          onClick={() => dispatch({ type: "toggleQuestionnaire" })}
           className={`px-4 py-2 w-24 rounded-xl tracking-wider my-auto mt-2 text-xl text-slate-900 hover:font-extrabold ${
             context?.darkMode
               ? " bg-green-200 hover:bg-green-300"
