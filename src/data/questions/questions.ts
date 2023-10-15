@@ -56,11 +56,11 @@ export const QUESTIONS_ITA: Question[] = [
   },
   {
     question:
-      "I surrogati della carne come i burger vegetali che hanno la pretesa di inserirsi come sostituti della carne per colore, forma e consistenza, questi hanno un impatto sostenibile?",
+      "I surrogati della carne come i burger vegetali che hanno la pretesa di inserirsi come sostituti della carne per colore, forma e consistenza, hanno un impatto sostenibile?",
     options: [
       "Si, la produzione di questi prodotti non hanno impatto sul nostro pianeta",
       "No, la produzione di questi alimenti hanno un impatto superiore rispetto al consumo di carni bianche",
-      "No, vi sono all'interno oli raffinali parzialmente idrogenati, amido modificato, aromi chimici e glicerina che aiutano la consistenza a essere il più vicina possibile a quella della carne ",
+      "No, vi sono all'interno oli raffinali parzialmente idrogenati, amido modificato, aromi chimici e glicerina che aiutano la consistenza a essere il più vicina possibile a quella della carne",
       "Si, la produzione di questi alimenti permette di non utilizzare le risorse ambientali",
     ],
     answer: 2,
