@@ -6,7 +6,7 @@ import { GlobalState, Documentations } from "../datatypes";
 //   DOCUMENTATION: "documentation"
 // }
 
-type ActionType = "language" | "darkMode" | "toggleDoc" | "questionnaire";
+type ActionType = "language" | "darkMode" | "toggleDoc" | "toggleQuestionnaire" | "backQuestion";
 // type Payload = {value:}
 type Action = { type: ActionType; payload?: string };
 type Dispatch = (action: Action) => void;
@@ -63,7 +63,7 @@ export const starterReducer = (state: GlobalState, action: Action) => {
           toggleDocumentation: !state.toggleDocumentation,
         };
       }
-    case "questionnaire":
+    case "toggleQuestionnaire":
       return { ...state, toggleQuestionnaire: !state.toggleQuestionnaire };
     default:
       return state;
