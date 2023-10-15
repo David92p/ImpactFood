@@ -8,8 +8,6 @@ const Header: React.FC = () => {
   const context = useContext(StarterContext);
   const dispatch = useContext(DispatchContext);
 
-  console.log(context);
-
   return (
     <div className="flex justify-between px-4 gap-10 w-[100%]">
       <div className="flex gap-4">
