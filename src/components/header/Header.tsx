@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import en from "../../assets/images/en.png";
 import it from "../../assets/images/it.png";
 import { BsSun, BsMoon } from "react-icons/bs";
-import { DispatchContext, StarterContext } from "../../context/context";
+import { CONTEXT, DISPATCH } from "../../context";
 
 const Header: React.FC = () => {
-  const context = useContext(StarterContext);
-  const dispatch = useContext(DispatchContext);
+  const context = useContext(CONTEXT);
+  const dispatch = useContext(DISPATCH);
 
   return (
     <div className="flex justify-between px-4 gap-10 w-[100%]">
