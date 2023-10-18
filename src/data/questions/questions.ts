@@ -120,8 +120,8 @@ export const QUESTIONS_ITA: Question[] = [
     options: [
       "Monocoltura",
       "Rotazione delle colture",
-      "Irrigazione eccessiva",
-      "Uso di pesticidi chimici",
+      "Irrigazione verticale",
+      "Irrigazione tramite prodotti artificiali",
     ],
     answer: 1,
   },
@@ -136,6 +136,111 @@ export const QUESTIONS_ENG: Question[] = [
       "Intensive farming",
       "Deforestation",
       "Installations of artificial platforms on the seas",
+    ],
+    answer: 1,
+  },
+  {
+    question: "What is the leading cause of deforestation on the planet?",
+    options: [
+      "Meat trade",
+      "Production of wood for homes",
+      "Use of water for the production of electricity",
+      "Use of chemicals harmful to the atmosphere",
+    ],
+    answer: 0,
+  },
+  {
+    question:
+      "Which of these diets do you think has the least impact on the production of greenhouse gases?",
+    options: [
+      "Vegetarian diet",
+      "Omnivorous diet",
+      "Pescetarian diet",
+      "Vegan diet",
+    ],
+    answer: 3,
+  },
+  {
+    question: "Which fruits have a lower environmental impact?",
+    options: [
+      "Esotic fruit",
+      "Seasonal fruit",
+      "Fruit preserved by freezing",
+      "Slowly ripening fruit",
+    ],
+    answer: 1,
+  },
+  {
+    question:
+      "Which packaging should you prefer to store products such as fruit and vegetables?",
+    options: [
+      "Paper packaging",
+      "Biodegradable packaging",
+      "Loose fruit and vegetables without packaging",
+      "Large packaging such as wooden boxes, for greater conservation",
+    ],
+    answer: 2,
+  },
+  {
+    question:
+      "Do meat substitutes such as veggie burgers that claim to be meat substitutes in terms of colour, shape and consistency have a sustainable impact?",
+    options: [
+      "Yes, the production of these products has no impact on our planet",
+      "No, the production of these foods has a greater impact than the consumption of white meat",
+      "No, it contains partially hydrogenated refined oils, modified starch, chemical flavorings and glycerin which help the consistency to be as close as possible to that of meat",
+      "Yes, the production of these foods allows us not to use environmental resources",
+    ],
+    answer: 2,
+  },
+  {
+    question:
+      "What is the milk-based drink with the lowest environmental impact?",
+    options: ["Skimmed milk", "Whole milk", "Almond milk", "Oat milk"],
+    answer: 3,
+  },
+  {
+    question:
+      "Which technique allows you to fish responsibly and attentively to the survival of marine fauna?",
+    options: [
+      "Line fishing",
+      "Net fishing",
+      "Trawling fishing",
+      "Fishing with selected breeding",
+    ],
+    answer: 0,
+  },
+  {
+    question: "Which agricultural technique is sustainable for our planet?",
+    options: [
+      "Agriculture with the use of herbicides and pesticides",
+      "Agriculture is cultivated through the use of selected greenhouses",
+      "Agriculture with solar systems to encourage production",
+      "Biological and biodynamic agriculture",
+    ],
+    answer: 3,
+  },
+  {
+    question: "Which packaging is currently sustainable for our planet?",
+    options: ["Glass", "Bioplastic", "Wood", "Paper"],
+    answer: 1,
+  },
+  {
+    question: "What packaging is recommended for storing our food at home?",
+    options: [
+      "Glass jars and containers",
+      "Carton box",
+      "Plastic bags with freshness-saving zip",
+      "Aluminum",
+    ],
+    answer: 0,
+  },
+  {
+    question: "Which cultivation practice promotes soil conservation?",
+    options: [
+      "Monoculture",
+      "Crop rotation",
+      "Vertical irrigation",
+      "Irrigation using artificial products",
     ],
     answer: 1,
   },
