@@ -1,34 +1,29 @@
 import React, { useReducer } from "react";
+import { initialState, CONTEXT, DISPATCH, Reducer } from "../../context";
 import { Header, Home, Questionnaire } from "..";
-import {
-  StarterContext,
-  DispatchContext,
-  initialState,
-  starterReducer,
-} from "../../context/context";
 
 const Starter: React.FC = () => {
-  const [state, dispatch] = useReducer(starterReducer, initialState);
+  const [state, dispatch] = useReducer(Reducer, initialState);
 
   return (
-    <StarterContext.Provider value={state}>
-      <DispatchContext.Provider value={dispatch}>
+    <CONTEXT.Provider value={state}>
+      <DISPATCH.Provider value={dispatch}>
         <div
           className={`flex justify-center min-h-screen ${
             state.darkMode ? "bg-slate-900" : "bg-green-100"
-          } py-10`}
+          } py-4`}
         >
           <div
             className={`flex flex-col items-center ${
               state?.darkMode ? "text-slate-300" : "text-slate-900"
-            } sm:w-[50%] mx-4 tracking-wider"`}
+            } sm:w-[50%] w-[100%] tracking-wider"`}
           >
             <Header />
-            {state.toggleQuestionnaire ? <Questionnaire /> : <Home />}
+            {state.start ? <Questionnaire /> : <Home />}
           </div>
         </div>
-      </DispatchContext.Provider>
-    </StarterContext.Provider>
+      </DISPATCH.Provider>
+    </CONTEXT.Provider>
   );
 };
 
