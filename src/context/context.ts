@@ -15,7 +15,7 @@ export const initialState: StateGlobal = {
 export const CONTEXT = createContext<StateGlobal>(initialState);
 export const DISPATCH = createContext<Dispatch>(() => null);
 
-export const Reducer = (state: StateGlobal, action: Action) => {
+export const Reducer = (state: StateGlobal, action: Action): StateGlobal => {
   switch (action.type) {
     case "language":
       return {
