@@ -26,7 +26,7 @@ const Header: React.FC = () => {
       </div>
       <label
         className={`${
-          context?.darkMode ? "bg-green-200" : "bg-green-400"
+          context?.darkMode ? "bg-green-300" : "bg-green-400"
         } relative w-16 h-8 rounded-full`}
       >
         <input

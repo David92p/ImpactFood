@@ -57,7 +57,7 @@ const Home: React.FC = () => {
                   : " bg-green-400 hover:bg-green-500"
               }`}
             >
-              { context.language === "ENG" ? "BACK" : "TORNA" }
+              {context.language === "ENG" ? "BACK" : "TORNA"}
               <IoIosArrowBack />
             </button>
           </div>
@@ -148,7 +148,7 @@ const Home: React.FC = () => {
                     : "bg-green-300 hover:bg-green-400"
                 }`}
               >
-                {stateHome.btnDocumentation[0]}
+                {stateHome.btnDocumentation[3]}
               </button>
             </div>
           </>
