@@ -17,7 +17,7 @@ const Question: React.FC<QuestionType> = ({
 
   return (
     <div
-      className={`flex flex-col tracking-wider leading-loose my-8 mx-4 sm:mx-0 rounded-xl text-2xl py-8  ${
+      className={`flex flex-col tracking-wider leading-loose mx-4 sm:mx-0 rounded-xl text-2xl pt-4  border-4 border-red-800 ${
         context?.darkMode ? "text-slate-900" : "bg-green-300"
       }`}
     >
@@ -107,7 +107,7 @@ const Question: React.FC<QuestionType> = ({
       </div>
 
       <div
-        className={`flex items-center gap-4 font-medium pl-2 2xl:pl-6 sm:text-3xl mx-2 my-4 2xl:mx-6 2xl:my-4 hover:mx-2 transition-all rounded-lg hover:font-extrabold cursor-pointer ${
+        className={`flex items-center gap-4 font-medium pl-2 2xl:pl-6 sm:text-3xl mx-2 my-2 2xl:mx-6 2xl:my-4 hover:mx-2 transition-all rounded-lg hover:font-extrabold cursor-pointer ${
           context?.darkMode
             ? "2xl:bg-green-200 hover:bg-green-300 hover:text-slate-900 2xl:text-slate-900 text-slate-200 2xl:py-4"
             : "2xl:bg-green-200 text-slate-900 2xl:py-4 hover:bg-green-200 hover:border-2 hover:border-slate-800 2xl:border-none"
