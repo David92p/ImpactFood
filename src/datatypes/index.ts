@@ -6,6 +6,6 @@ import StateHome from "./home/stateHome";
 
 //QUESIONNAIRE COMPONENT
 import StateQuestionnaire from "./questionnaire/stateQuestionnaire";
-import Question from "./questionnaire/question";
+import QuestionType from "./questionnaire/QuestionType";
 
-export type { StateGlobal, StateHome, StateQuestionnaire, Question };
+export type { StateGlobal, StateHome, StateQuestionnaire, QuestionType };

@@ -3,5 +3,6 @@ import Starter from "./starter/Starter";
 import Home from "./home/Home";
 import Questionnaire from "./questionnaire/Questionnaire";
 import Question from "./questionnaire/Question";
+import Loading from "./loading/Loading";
 
-export { Header, Starter, Home, Questionnaire, Question };
+export { Header, Starter, Home, Questionnaire, Question, Loading };
