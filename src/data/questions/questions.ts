@@ -1,6 +1,6 @@
-import { Question } from "../../datatypes";
+import { QuestionType } from "../../datatypes";
 
-export const QUESTIONS_ITA: Question[] = [
+export const QUESTIONS_ITA: QuestionType[] = [
   {
     question:
       "Qual'è il primo responsabile di produzione di anidride carbonica nel nostro pianeta?",
@@ -127,7 +127,7 @@ export const QUESTIONS_ITA: Question[] = [
   },
 ];
 
-export const QUESTIONS_ENG: Question[] = [
+export const QUESTIONS_ENG: QuestionType[] = [
   {
     question:
       "What is primarily responsible for the production of carbon dioxide on our planet?",
