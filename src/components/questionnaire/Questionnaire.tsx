@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
-import { Question } from "..";
+
 import { StateQuestionnaire } from "../../datatypes";
 import { QUESTIONNAIRE_ENG, QUESTIONNAIRE_ITA } from "../../data";
 import { CONTEXT, DISPATCH } from "../../context";
+import { Loading, Question } from "..";
 
 const Questionnaire: React.FC = () => {
   const context = useContext(CONTEXT);
@@ -11,6 +12,24 @@ const Questionnaire: React.FC = () => {
 
   const [stateQuestionnaire, setStateQuestionnaire] =
     useState<StateQuestionnaire>(QUESTIONNAIRE_ENG);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [indexCasual, setIndexCasual] = useState<number[]>([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    try {
+      const randomIndices: number[] = [];
+      while (randomIndices.length < 10) {
+        const index: number = Math.floor(Math.random() * 12); //il valore della lunghezza massima dovrebbe essere 20 - inserire successivamente le altre domande mancanti
+        if (!randomIndices.includes(index)) randomIndices.push(index);
+      }
+      setIndexCasual(randomIndices);
+      setIsLoading(false);
+    } catch (error) {
+      console.log("entrato nel catch", error);
+    }
+  }, []);
 
   useEffect(() => {
     context.language == "ENG"
@@ -35,7 +54,11 @@ const Questionnaire: React.FC = () => {
         </button>
       </div>
       <div>
-        <Question {...stateQuestionnaire.question} />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Question {...stateQuestionnaire.questions[indexCasual[0]]} />
+        )}
       </div>
     </>
   );
