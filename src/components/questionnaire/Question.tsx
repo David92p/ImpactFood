@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 
 import { CONTEXT, DISPATCH } from "../../context";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCarrot } from "@fortawesome/free-solid-svg-icons";
 import { QuestionType } from "../../datatypes";
 
 const Question: React.FC<QuestionType> = ({
@@ -18,6 +16,7 @@ const Question: React.FC<QuestionType> = ({
   return (
     <div
       className={`flex flex-col tracking-wider leading-loose mx-4 sm:mx-0 rounded-xl text-2xl pt-4  border-4 border-red-800 ${
+
         context?.darkMode ? "text-slate-900" : "bg-green-300"
       }`}
     >
