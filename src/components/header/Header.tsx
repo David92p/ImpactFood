@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import en from "../../assets/images/en.png";
 import it from "../../assets/images/it.png";
-import { BsSun, BsMoon } from "react-icons/bs";
 import { CONTEXT, DISPATCH } from "../../context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon } from "@fortawesome/free-regular-svg-icons/faMoon";
+import { faSun } from "@fortawesome/free-regular-svg-icons/faSun";
 
 const Header: React.FC = () => {
   const context = useContext(CONTEXT);
@@ -35,7 +37,7 @@ const Header: React.FC = () => {
           className="sr-only peer "
         />
         <span className="flex justify-center items-center w-2/5 h-4/5 bg-slate-900 absolute rounded-full left-1 top-1 cursor-pointer peer-checked:bg-slate-200 peer-checked:left-8 transition-all duration-500">
-          {context?.darkMode ? <BsMoon /> : <BsSun color={"green"} />}
+          {context?.darkMode ? <FontAwesomeIcon icon={faMoon} size="lg" /> : <FontAwesomeIcon icon={faSun} size="lg" />}
         </span>
       </label>
     </div>

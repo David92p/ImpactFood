@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import logo from "../../assets/images/logo.jpg";
-import { IoIosArrowBack } from "react-icons/io";
 import { StateHome } from "../../datatypes";
 import { CONTEXT, DISPATCH } from "../../context";
 import { HOME_ENG, HOME_ITA } from "../../data";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Home: React.FC = () => {
   const context = useContext(CONTEXT);
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
         {stateHome.subtitle}
         <button
           onClick={() => dispatch({ type: "toggleQuestionnaire" })}
-          className={`px-4 py-2 w-24 rounded-xl tracking-wider my-auto mt-2 text-xl text-slate-900 hover:font-extrabold ${
+          className={`px-4 py-2 w-30 rounded-xl tracking-wider my-auto mt-2 text-xl text-slate-900 hover:font-extrabold hover:w-28 hover:h-12 transition-all ${
             context?.darkMode
               ? " bg-green-200 hover:bg-green-300"
               : " bg-green-400 hover:bg-green-500"
