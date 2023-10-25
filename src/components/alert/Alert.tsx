@@ -10,8 +10,8 @@ const Alert: React.FC = () => {
 
   return (
     <div
-      className={`flex flex-col justify-around items-center h-60 sm:h-72 w-80 text-black rounded-lg opacity-100 z-10 ${
-        context.darkMode ? "bg-green-200 opacity-100" : "bg-green-300"
+      className={`flex flex-col justify-around items-center h-60 sm:h-72 w-80 text-black rounded-2xl opacity-100 z-10 ${
+        context.darkMode ? "bg-green-300 opacity-100" : "bg-green-200"
       }`}
     >
       <FontAwesomeIcon
@@ -29,8 +29,8 @@ const Alert: React.FC = () => {
         onClick={() => dispatch({ type: "toggleQuestionnaire" })}
         className={`flex items-center justify-center px-3 py-2 h-10 sm:h-auto w-24 rounded-xl tracking-wider text-base sm:text-xl text-slate-900 hover:font-extrabold  ${
           context?.darkMode
-            ? " bg-green-300 hover:bg-green-400"
-            : " bg-green-200 hover:bg-green-400"
+            ? "bg-slate-900 hover:bg-green-200 text-green-200 hover:text-slate-900 "
+            : "bg-green-300 hover:bg-green-400"
         }`}
       >
         <FontAwesomeIcon icon={faCheck} size="xl" />
