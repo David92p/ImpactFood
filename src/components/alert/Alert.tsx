@@ -29,11 +29,11 @@ const Alert: React.FC = () => {
         onClick={() => dispatch({ type: "toggleQuestionnaire" })}
         className={`flex items-center justify-center px-3 py-2 h-10 sm:h-auto w-24 rounded-xl tracking-wider text-base sm:text-xl text-slate-900 hover:font-extrabold  ${
           context?.darkMode
-            ? "bg-slate-900 hover:bg-green-200 text-green-200 hover:text-slate-900 "
+            ? "bg-slate-900 hover:bg-green-200"
             : "bg-green-300 hover:bg-green-400"
         }`}
       >
-        <FontAwesomeIcon icon={faCheck} size="xl" />
+        <FontAwesomeIcon icon={faCheck} size="xl" style={context.darkMode ? {color:"#4ade80"} : {color:"#0f172a"}} />
       </button>
     </div>
   );
