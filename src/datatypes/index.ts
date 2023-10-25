@@ -9,4 +9,10 @@ import StateQuestionnaire from "./questionnaire/stateQuestionnaire";
 import QuestionType from "./questionnaire/QuestionType";
 import Register from "./questionnaire/register";
 
-export type { StateGlobal, StateHome, StateQuestionnaire, QuestionType, Register };
+export type {
+  StateGlobal,
+  StateHome,
+  StateQuestionnaire,
+  QuestionType,
+  Register,
+};
