@@ -63,7 +63,7 @@ const Home: React.FC = () => {
           </div>
         ) : (
           <>
-            <div className="flex justify-center h-1/2 sm:h-1/3 gap-x-4 sm:gap-x-20 mb-2 text-slate-900 font-extrabold">
+            <div className="flex justify-center h-1/2 sm:h-1/3 gap-x-3 sm:gap-x-10 mb-3 sm:mb-4 text-slate-900 font-extrabold">
               <button
                 onClick={() =>
                   setStateHome((prev: StateHome) => {
@@ -107,7 +107,7 @@ const Home: React.FC = () => {
                 {stateHome.btnDocumentation[1]}
               </button>
             </div>
-            <div className="flex justify-center h-1/2 sm:h-1/3 gap-x-3 text-slate-900 font-extrabold">
+            <div className="flex justify-center h-1/2 sm:h-1/3 gap-x-3 sm:gap-x-10 text-slate-900 font-extrabold">
               <button
                 onClick={() =>
                   setStateHome((prev: StateHome) => {

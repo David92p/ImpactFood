@@ -16,7 +16,7 @@ const Starter: React.FC = () => {
           <div
             className={`flex flex-col items-center ${
               state?.darkMode ? "text-slate-300" : "text-slate-900"
-            } sm:w-[50%] w-[100%] tracking-wider"`}
+            } sm:w-[75%] 2xl:w-[50%] w-[100%] tracking-wider`}
           >
             <Header />
             {state.start ? <Questionnaire /> : <Home />}
