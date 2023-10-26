@@ -19,6 +19,7 @@ const Questionnaire: React.FC = () => {
   const [result, setResult] = useState<boolean>(false);
   const [alert, setAlert] = useState<boolean>(false);
   const [register, setRegister] = useState<Register | null>(null);
+  const [dataResult, setDataResult] = useState<number[]>([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -88,6 +89,24 @@ const Questionnaire: React.FC = () => {
     }
   };
 
+  const getDataResult = (
+    answer: number,
+    result: number,
+    question: number = stateQuestionnaire.counterQuestions
+  ) => {
+    if (answer === result) {
+      if (!dataResult.includes(question)) {
+        setDataResult((prevResult: number[]) => [...prevResult, question]);
+      }
+    } else if (answer !== result) {
+      if (dataResult.includes(question)) {
+        setDataResult(
+          dataResult.filter((answer: number) => answer !== question)
+        );
+      }
+    }
+  };
+
   return (
     <>
       {result ? (
@@ -131,6 +150,7 @@ const Questionnaire: React.FC = () => {
                     register?.casualIndex[register.index]
                   ]}
                   alert={alert}
+                  getDataResult={getDataResult}
                 />
               )}
               {register && (
