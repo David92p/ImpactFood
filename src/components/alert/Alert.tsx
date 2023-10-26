@@ -11,7 +11,9 @@ const Alert: React.FC = () => {
   return (
     <div
       className={`flex flex-col justify-around items-center h-60 sm:h-72 w-80 text-black rounded-2xl opacity-100 z-10 ${
-        context.darkMode ? "bg-green-300 opacity-100" : "bg-green-200"
+        context.darkMode
+          ? "bg-green-300 opacity-100"
+          : "bg-green-200 border-2 border-slate-900"
       }`}
     >
       <FontAwesomeIcon
@@ -33,7 +35,11 @@ const Alert: React.FC = () => {
             : "bg-green-300 hover:bg-green-400"
         }`}
       >
-        <FontAwesomeIcon icon={faCheck} size="xl" style={context.darkMode ? {color:"#4ade80"} : {color:"#0f172a"}} />
+        <FontAwesomeIcon
+          icon={faCheck}
+          size="xl"
+          style={context.darkMode ? { color: "#4ade80" } : { color: "#0f172a" }}
+        />
       </button>
     </div>
   );
