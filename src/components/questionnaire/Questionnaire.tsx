@@ -21,6 +21,7 @@ const Questionnaire: React.FC = () => {
   const [register, setRegister] = useState<Register | null>(null);
   const [dataResult, setDataResult] = useState<number[]>([]);
 
+  
   useEffect(() => {
     setIsLoading(true);
     try {
@@ -64,7 +65,7 @@ const Questionnaire: React.FC = () => {
     if (register.index == 9) {
       setResult(true);
     } else {
-      setAlert(false);
+      // setAlert(false);
       setStateQuestionnaire((prev: StateQuestionnaire): StateQuestionnaire => {
         return {
           ...prev,
@@ -87,6 +88,7 @@ const Questionnaire: React.FC = () => {
       });
       setRegister({ ...register, index: register.index - 1 });
     }
+    
   };
 
   const getDataResult = (
@@ -105,12 +107,13 @@ const Questionnaire: React.FC = () => {
         );
       }
     }
+    
   };
 
   return (
     <>
       {result ? (
-        <Result />
+        <Result result={dataResult}/>
       ) : (
         <div
           onClick={alert ? () => setAlert(false) : () => null}

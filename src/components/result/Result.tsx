@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CONTEXT, DISPATCH } from "../../context";
 
-const Result: React.FC = () => {
-  return <div>RESULT HERE ........</div>;
+interface x {
+  result: number[]
+}
+
+const Result: React.FC<x> = ({result}) => {
+  const dispatch = useContext(DISPATCH);
+  console.log(result);
+  
+  return <div>RESULT HERE .......btn.
+    <button onClick={() => dispatch({ type: "toggleQuestionnaire" })}>BACK</button>
+  </div>;
 };
 
 export default Result;
