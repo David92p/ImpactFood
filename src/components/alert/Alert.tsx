@@ -13,7 +13,7 @@ const Alert: React.FC = () => {
       className={`flex flex-col justify-around items-center h-60 sm:h-72 w-80 text-black rounded-2xl opacity-100 z-10 ${
         context.darkMode
           ? "bg-green-300 opacity-100"
-          : "bg-green-300 border-2 border-slate-900"
+          : "bg-green-200 border-2 border-slate-900"
       }`}
     >
       <FontAwesomeIcon
@@ -32,7 +32,7 @@ const Alert: React.FC = () => {
         className={`flex items-center justify-center px-3 py-2 h-10 sm:h-auto w-24 rounded-xl tracking-wider text-base sm:text-xl text-slate-900 hover:font-extrabold  ${
           context?.darkMode
             ? "bg-slate-900 hover:bg-green-200 hover:border-2 border-slate-900"
-            : "bg-green-200 hover:bg-green-400"
+            : "bg-green-300 hover:bg-green-400"
         }`}
       >
         <FontAwesomeIcon
