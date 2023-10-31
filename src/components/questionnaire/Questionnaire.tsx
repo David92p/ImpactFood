@@ -3,7 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons/faArrowRightLong";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons/faArrowLeftLong";
-import { Register, StateQuestionnaire } from "../../datatypes";
+import {
+  Checked,
+  AnswerResults,
+  Register,
+  StateQuestionnaire,
+} from "../../datatypes";
 import { QUESTIONNAIRE_ENG, QUESTIONNAIRE_ITA } from "../../data";
 import { CONTEXT } from "../../context";
 import { Alert, Loading, Question, Result } from "..";
@@ -16,12 +21,15 @@ const Questionnaire: React.FC = () => {
     useState<StateQuestionnaire>(QUESTIONNAIRE_ENG);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [result, setResult] = useState<boolean>(false);
-  const [alert, setAlert] = useState<boolean>(false);
   const [register, setRegister] = useState<Register | null>(null);
-  const [dataResult, setDataResult] = useState<number[]>([]);
+  const [alert, setAlert] = useState<boolean>(false);
+  const [answerResults, setAnswerResults] = useState<AnswerResults>({
+    corrects: [],
+    incorrects: [],
+    register: [],
+  });
+  const [result, setResult] = useState<boolean>(false);
 
-  
   useEffect(() => {
     setIsLoading(true);
     try {
@@ -65,7 +73,6 @@ const Questionnaire: React.FC = () => {
     if (register.index == 9) {
       setResult(true);
     } else {
-      // setAlert(false);
       setStateQuestionnaire((prev: StateQuestionnaire): StateQuestionnaire => {
         return {
           ...prev,
@@ -88,32 +95,72 @@ const Questionnaire: React.FC = () => {
       });
       setRegister({ ...register, index: register.index - 1 });
     }
-    
   };
 
-  const getDataResult = (
-    answer: number,
-    result: number,
-    question: number = stateQuestionnaire.counterQuestions
+  const checkAnswers = (
+    checked: Checked,
+    correctAnswer: number,
+    answer: number
   ) => {
-    if (answer === result) {
-      if (!dataResult.includes(question)) {
-        setDataResult((prevResult: number[]) => [...prevResult, question]);
+    const data = { ...answerResults };
+    let index_1 = 0;
+
+    while (index_1 <= data.register.length) {
+      if (data.register.length == 0) {
+        data.register.push({
+          question_number: stateQuestionnaire.counterQuestions,
+          answers: checked,
+        });
+        break;
+      } else if (data.register.length >= index_1) {
+        if (data.register.length == index_1) {
+          data.register.push({
+            question_number: stateQuestionnaire.counterQuestions,
+            answers: checked,
+          });
+          break;
+        } else if (
+          data.register[index_1].question_number ==
+          stateQuestionnaire.counterQuestions
+        ) {
+          data.register[index_1] = {
+            ...data.register[index_1],
+            answers: checked,
+          };
+          break;
+        }
       }
-    } else if (answer !== result) {
-      if (dataResult.includes(question)) {
-        setDataResult(
-          dataResult.filter((answer: number) => answer !== question)
+      index_1++;
+    }
+
+    if (correctAnswer == answer) {
+      if (data.incorrects.includes(stateQuestionnaire.counterQuestions)) {
+        data.incorrects = data.incorrects.filter(
+          (element: number) => element != stateQuestionnaire.counterQuestions
         );
       }
+      if (!data.corrects.includes(stateQuestionnaire.counterQuestions)) {
+        data.corrects.push(stateQuestionnaire.counterQuestions);
+      }
     }
-    
+    if (correctAnswer !== answer) {
+      if (data.corrects.includes(stateQuestionnaire.counterQuestions)) {
+        data.corrects = data.corrects.filter(
+          (element: number) => element != stateQuestionnaire.counterQuestions
+        );
+      }
+      if (!data.incorrects.includes(stateQuestionnaire.counterQuestions)) {
+        data.incorrects.push(stateQuestionnaire.counterQuestions);
+      }
+    }
+    setAnswerResults(data);
   };
+  console.log(answerResults);
 
   return (
     <>
       {result ? (
-        <Result result={dataResult}/>
+        <Result />
       ) : (
         <div
           onClick={alert ? () => setAlert(false) : () => null}
@@ -150,10 +197,11 @@ const Questionnaire: React.FC = () => {
               {register && (
                 <Question
                   {...stateQuestionnaire.questions[
-                    register?.casualIndex[register.index]
+                    register.casualIndex[register.index]
                   ]}
                   alert={alert}
-                  getDataResult={getDataResult}
+                  register={answerResults.register}
+                  checkAnswers={checkAnswers}
                 />
               )}
               {register && (
