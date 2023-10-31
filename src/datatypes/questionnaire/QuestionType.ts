@@ -1,10 +1,21 @@
+// import { AnswerResults } from "..";
+
+import { Checked, RegisterAnswer } from "..";
+
 interface QuestionType {
   question: string;
   options: [string, string, string, string];
   answer: 0 | 1 | 2 | 3;
+
+  // data from Questionnaire
   counterQuestion?: number;
   alert?: boolean;
-  getDataResult?: (answer: number, result: number, question?: number) => void;
+  register?: RegisterAnswer[];
+  checkAnswers?: (
+    cheeks: Checked,
+    correctAnswer: number,
+    answer: number
+  ) => void;
 }
 
 export default QuestionType;
