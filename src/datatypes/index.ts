@@ -13,6 +13,10 @@ import {
   RegisterAnswer,
   AnswerResults,
 } from "./questionnaire/answers";
+import ResultType from "./questionnaire/resultType";
+
+//ALERT 
+import AlertType from "./alert/alertType";
 
 export type {
   StateGlobal,
@@ -23,4 +27,6 @@ export type {
   Checked,
   RegisterAnswer,
   AnswerResults,
+  ResultType,
+  AlertType
 };
