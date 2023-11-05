@@ -11,6 +11,7 @@ const Question: React.FC<QuestionType> = ({
   alert,
   register,
   checkAnswers,
+  id
 }) => {
   const context = useContext(CONTEXT);
 
@@ -38,48 +39,53 @@ const Question: React.FC<QuestionType> = ({
     } else if (name == "answer_4") {
       data = { ...data, checked4: !data.checked4 };
     }
-
+    if (id) {
+      const element = document.getElementById(id)
+      element?.remove()
+    }
+    
     setCheek(data);
     checkAnswers && checkAnswers(data, answer, value);
   };
 
   useEffect(() => {
-    setCheek({
-      checked1: false,
-      checked2: false,
-      checked3: false,
-      checked4: false,
-    });
-    // if (register) {
-    //   let i: number = 0;
-    //   while (i <= register.length) {
-    //     if (register[i].question_number == counterQuestion) {
-    //       setCheek(register[i].answers);
-    //       break;
-    //     }
-    //     if (i == register.length) {
-    //       setCheek({
-    //         checked1: false,
-    //         checked2: false,
-    //         checked3: false,
-    //         checked4: false,
-    //       });
-    //     }
-    //   }
-    //   i++;
-    // } else {
-    //   setCheek({
-    //     checked1: false,
-    //     checked2: false,
-    //     checked3: false,
-    //     checked4: false,
-    //   });
-    // }
-  }, [question]);
+    if (register){
+      let i:number = 0
+      while (i <= register.length){
+        if (register.length == 0){
+          setCheek({
+            checked1: false,
+            checked2: false,
+            checked3: false,
+            checked4: false,
+          });
+          break
+        }
+        else if (register.length >= i ){
+          if (register.length == i){
+            setCheek({
+              checked1: false,
+              checked2: false,
+              checked3: false,
+              checked4: false,
+            })
+            break
+          }
+          else if (register[i].question_number == counterQuestion){
+            setCheek(register[i].answers)
+            break
+          }
+        }
+        i++
+      }
+    }
+    
+  }, [counterQuestion, register]);
 
+  
   return (
     <div
-      className={`flex flex-col tracking-wider leading-loose sm:mx-0 rounded-xl mt-3 mx-2 text-justify${
+      className={`flex flex-col tracking-wider leading-loose sm:mx-0 rounded-xl mt-3 mx-2 text-justify ${
         alert ? "opacity-25" : "opacity-100"
       } ${context?.darkMode ? "text-slate-900" : "bg-green-300"}`}
     >
@@ -91,7 +97,8 @@ const Question: React.FC<QuestionType> = ({
 
       <div
         onClick={() => handleAnswer("answer_1", options.indexOf(options[0]))}
-        className={`flex items-center gap-2 m-4 2xl:mx-6 p-2 hover:m-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer ${
+        className={`flex items-center gap-2 m-4 2xl:mx-6 p-2 hover:m-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer
+        ${
           context?.darkMode
             ? `2xl:bg-green-200 2xl:hover:bg-green-300 text-slate-200 hover:text-slate-900 2xl:text-slate-900 ${
                 cheek.checked1 ? "text-slate-900" : ""
@@ -102,8 +109,8 @@ const Question: React.FC<QuestionType> = ({
           cheek.checked1
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 m-2 text-xl"
-                  : "bg-green-200 m-2 text-xl"
+                  ? "bg-green-200 2xl:bg-green-300 m-2 2xl:mx-2 text-xl"
+                  : "bg-green-200 m-2 2xl:mx-2 text-xl"
               }`
             : ` ${
                 context.darkMode
@@ -146,8 +153,8 @@ const Question: React.FC<QuestionType> = ({
           cheek.checked2
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 m-2 text-xl"
-                  : "bg-green-200 m-2 text-xl"
+                  ? "bg-green-200 2xl:bg-green-300 m-2 2xl:mx-2 text-xl"
+                  : "bg-green-200 m-2 2xl:mx-2 text-xl"
               }`
             : ` ${
                 context.darkMode
@@ -187,8 +194,8 @@ const Question: React.FC<QuestionType> = ({
           cheek.checked3
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 m-2 text-xl"
-                  : "bg-green-200 m-2 text-xl"
+                  ? "bg-green-200 2xl:bg-green-300 m-2 2xl:mx-2 text-xl"
+                  : "bg-green-200 m-2 2xl:mx-2 text-xl"
               }`
             : ` ${
                 context.darkMode
@@ -228,8 +235,8 @@ const Question: React.FC<QuestionType> = ({
           cheek.checked4
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 m-2 text-xl"
-                  : "bg-green-200 m-2 text-xl"
+                  ? "bg-green-200 2xl:bg-green-300 m-2 2xl:mx-2 text-xl"
+                  : "bg-green-200 m-2 2xl:mx-2 text-xl"
               }`
             : ` ${
                 context.darkMode
