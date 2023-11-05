@@ -8,6 +8,8 @@ import {
   AnswerResults,
   Register,
   StateQuestionnaire,
+  AlertType,
+  RegisterAnswer,
 } from "../../datatypes";
 import { QUESTIONNAIRE_ENG, QUESTIONNAIRE_ITA } from "../../data";
 import { CONTEXT } from "../../context";
@@ -21,14 +23,18 @@ const Questionnaire: React.FC = () => {
     useState<StateQuestionnaire>(QUESTIONNAIRE_ENG);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [alert, setAlert] = useState<AlertType | null>(null);
   const [register, setRegister] = useState<Register | null>(null);
-  const [alert, setAlert] = useState<boolean>(false);
+  
   const [answerResults, setAnswerResults] = useState<AnswerResults>({
     corrects: [],
     incorrects: [],
     register: [],
   });
+
   const [result, setResult] = useState<boolean>(false);
+
+  
 
   useEffect(() => {
     setIsLoading(true);
@@ -68,11 +74,22 @@ const Questionnaire: React.FC = () => {
           }
         );
   }, [context.language]);
+  console.log(register, "REGISTER");
+  console.log(answerResults, "ANSWER RESULT");
+  
 
   const handleNext = (register: Register) => {
     if (register.index == 9) {
-      setResult(true);
-    } else {
+      const missingAnswers:number[] = [1,2,3,4,5,6,7,8,9,10]
+      answerResults.register.forEach((answer:RegisterAnswer) => {
+        if (missingAnswers.includes(answer.question_number)) {
+          const i:number = missingAnswers.indexOf(answer.question_number)
+          missingAnswers.splice(i, 1)
+        }
+      })
+      answerResults.register.length == 10 ? setResult(true) : setAlert({type: "errorResult", toggle: true, data: missingAnswers});
+    } 
+    else if (register.index < 9){
       setStateQuestionnaire((prev: StateQuestionnaire): StateQuestionnaire => {
         return {
           ...prev,
@@ -80,12 +97,13 @@ const Questionnaire: React.FC = () => {
         };
       });
       setRegister({ ...register, index: register.index + 1 });
-    }
+    } 
+
   };
 
   const handlePrev = (register: Register) => {
     if (register.index == 0) {
-      setAlert(true);
+      setAlert({type: "goBack", toggle: true});
     } else {
       setStateQuestionnaire((prev: StateQuestionnaire): StateQuestionnaire => {
         return {
@@ -100,7 +118,7 @@ const Questionnaire: React.FC = () => {
   const checkAnswers = (
     checked: Checked,
     correctAnswer: number,
-    answer: number
+    answer: number,
   ) => {
     const data = { ...answerResults };
     let index_1 = 0;
@@ -155,26 +173,37 @@ const Questionnaire: React.FC = () => {
     }
     setAnswerResults(data);
   };
-  console.log(answerResults);
 
   return (
     <>
       {result ? (
-        <Result />
+        <Result corrects={answerResults.corrects}/>
       ) : (
         <div
-          onClick={alert ? () => setAlert(false) : () => null}
+          onClick={alert?.toggle ? () => setAlert({type: "goBack", toggle: false}) : () => null}
           className="w-[100%]"
         >
-          <div className="flex flex-col-reverse sm:flex-row items-center justify-center sm:justify-around w-[100%] text-3xl mt-10 font-extrabold">
+          <div className="flex mt-4 mb-2 py-2 justify-around mx-2">
+            <div id="1" className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300">1</div>
+            <div id="2" className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300">2</div>
+            <div id="3" className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300">3</div>
+            <div id="4" className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300">4</div>
+            <div id="5" className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300">5</div>
+            <div id="6" className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300">6</div>
+            <div id="7" className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300">7</div>
+            <div id="8" className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300">8</div>
+            <div id="9" className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300">9</div>
+            <div id="10" className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300">10</div>
+          </div>   
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-center sm:justify-around w-[100%] text-3xl font-extrabold">
             {stateQuestionnaire.title + stateQuestionnaire.counterQuestions}
             <button
-              onClick={() => setAlert((prev) => !prev)}
+              onClick={() => setAlert({type: "goBack", toggle: true})}
               className={`flex items-center justify-center mr-1 mb-3 sm:my-auto px-3 py-2 h-10 sm:h-auto w-auto rounded-xl tracking-wider text-base sm:text-xl text-slate-900 hover:font-extrabold  ${
                 context?.darkMode
                   ? " bg-green-300 hover:bg-green-400"
                   : " bg-green-300 hover:bg-green-400"
-              } ${alert ? "pointer-events-none" : "cursor-pointer"}`}
+              } ${alert?.toggle ? "pointer-events-none" : "cursor-pointer"}`}
             >
               <span>
                 Home
@@ -192,16 +221,18 @@ const Questionnaire: React.FC = () => {
           ) : (
             <div className="flex flex-col relative">
               <div className="w-[100%] absolute px-2 mt-32 sm:mt-24 flex justify-center">
-                {alert && <Alert />}
+                {alert?.toggle && <Alert {...alert}/>}
               </div>
               {register && (
                 <Question
                   {...stateQuestionnaire.questions[
                     register.casualIndex[register.index]
                   ]}
-                  alert={alert}
+                  counterQuestion={stateQuestionnaire.counterQuestions}
+                  alert={alert?.toggle}
                   register={answerResults.register}
                   checkAnswers={checkAnswers}
+                  id = {stateQuestionnaire.counterQuestions.toString()}
                 />
               )}
               {register && (
@@ -212,7 +243,7 @@ const Questionnaire: React.FC = () => {
                       context?.darkMode
                         ? " bg-green-300 hover:bg-green-400"
                         : " bg-green-300 hover:bg-green-400"
-                    } ${alert ? "pointer-events-none" : "cursor-pointer"}`}
+                    } ${alert?.toggle ? "pointer-events-none" : "cursor-pointer"}`}
                   >
                     <FontAwesomeIcon
                       icon={faArrowLeftLong}
@@ -226,7 +257,7 @@ const Questionnaire: React.FC = () => {
                       context?.darkMode
                         ? " bg-green-300 hover:bg-green-400"
                         : " bg-green-300 hover:bg-green-400"
-                    } ${alert ? "pointer-events-none" : "cursor-pointer"}`}
+                    } ${alert?.toggle ? "pointer-events-none" : "cursor-pointer"}`}
                   >
                     <FontAwesomeIcon
                       icon={faArrowRightLong}
