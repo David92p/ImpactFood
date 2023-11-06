@@ -125,6 +125,23 @@ export const QUESTIONS_ITA: QuestionType[] = [
     ],
     answer: 1,
   },
+  {
+    question:
+      "Quali tra questi prodotti di origine animale necessita di un maggior numero di risorse ambientali?",
+    options: ["Formaggio", "Carne bianca", "Uova", "Carne rossa"],
+    answer: 3,
+  },
+  {
+    question:
+      "La popolazione in continua crescita richiede un notevole aumento della produzione di cibo entro il 2050, in quale pecentuale?",
+    options: ["40 %", "70 %", "50 %", "100 %"],
+    answer: 1,
+  },
+  {
+    question: "Qual'è il paese con il maggior consumo di carne?",
+    options: ["Cina", "Argentina", "Stati Uniti", "Irlanda"],
+    answer: 2,
+  },
 ];
 
 export const QUESTIONS_ENG: QuestionType[] = [
@@ -243,5 +260,22 @@ export const QUESTIONS_ENG: QuestionType[] = [
       "Irrigation using artificial products",
     ],
     answer: 1,
+  },
+  {
+    question:
+      "Which of these animal products requires the most environmental resources?",
+    options: ["Cheese", "Chicken", "Eggs", "Beef"],
+    answer: 3,
+  },
+  {
+    question:
+      "The ever-growing population requires a significant increase in food production by 2050, by what percentage?",
+    options: ["40 %", "70 %", "50 %", "100 %"],
+    answer: 1,
+  },
+  {
+    question: "Which country has the highest meat consumption?",
+    options: ["China", "Argentina", "United States", "Ireland"],
+    answer: 2,
   },
 ];
