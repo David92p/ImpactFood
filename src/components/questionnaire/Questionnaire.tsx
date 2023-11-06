@@ -39,7 +39,7 @@ const Questionnaire: React.FC = () => {
     try {
       const randomIndices: number[] = [];
       while (randomIndices.length < 10) {
-        const index: number = Math.floor(Math.random() * 12); //il valore della lunghezza massima dovrebbe essere 20 - inserire successivamente le altre domande mancanti
+        const index: number = Math.floor(Math.random() * 15);
         if (!randomIndices.includes(index)) randomIndices.push(index);
       }
       setRegister({ casualIndex: randomIndices, index: 0 });
