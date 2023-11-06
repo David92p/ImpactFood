@@ -34,7 +34,8 @@ export const QUESTIONS_ITA: QuestionType[] = [
     answer: 3,
   },
   {
-    question: "Quali frutta ha un minor impatto ambiantale?",
+    question:
+      "Quale di queste tipologie di frutta ha il minor impatto ambientale?",
     options: [
       "Frutta esotica",
       "Frutta di stagione",
@@ -178,7 +179,8 @@ export const QUESTIONS_ENG: QuestionType[] = [
     answer: 3,
   },
   {
-    question: "Which fruits have a lower environmental impact?",
+    question:
+      "Which of these types of fruit has the least environmental impact?",
     options: [
       "Esotic fruit",
       "Seasonal fruit",
