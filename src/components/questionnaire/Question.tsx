@@ -219,7 +219,7 @@ const Question: React.FC<QuestionType> = ({
 
       <div
         onClick={() => handleAnswer("answer_4", options.indexOf(options[3]))}
-        className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer
+        className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer mb-4
         ${
           context?.darkMode
             ? `2xl:bg-green-200 2xl:hover:bg-green-300 text-slate-200 hover:text-slate-900 2xl:text-slate-900 ${
