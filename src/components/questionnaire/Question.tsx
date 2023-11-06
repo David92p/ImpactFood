@@ -11,7 +11,7 @@ const Question: React.FC<QuestionType> = ({
   alert,
   register,
   checkAnswers,
-  id
+  id,
 }) => {
   const context = useContext(CONTEXT);
 
@@ -40,49 +40,45 @@ const Question: React.FC<QuestionType> = ({
       data = { ...data, checked4: !data.checked4 };
     }
     if (id) {
-      const element = document.getElementById(id)
-      element?.remove()
+      const element = document.getElementById(id);
+      element?.remove();
     }
-    
+
     setCheek(data);
     checkAnswers && checkAnswers(data, answer, value);
   };
 
   useEffect(() => {
-    if (register){
-      let i:number = 0
-      while (i <= register.length){
-        if (register.length == 0){
+    if (register) {
+      let i: number = 0;
+      while (i <= register.length) {
+        if (register.length == 0) {
           setCheek({
             checked1: false,
             checked2: false,
             checked3: false,
             checked4: false,
           });
-          break
-        }
-        else if (register.length >= i ){
-          if (register.length == i){
+          break;
+        } else if (register.length >= i) {
+          if (register.length == i) {
             setCheek({
               checked1: false,
               checked2: false,
               checked3: false,
               checked4: false,
-            })
-            break
-          }
-          else if (register[i].question_number == counterQuestion){
-            setCheek(register[i].answers)
-            break
+            });
+            break;
+          } else if (register[i].question_number == counterQuestion) {
+            setCheek(register[i].answers);
+            break;
           }
         }
-        i++
+        i++;
       }
     }
-    
   }, [counterQuestion, register]);
 
-  
   return (
     <div
       className={`flex flex-col tracking-wider leading-loose sm:mx-0 rounded-xl mt-3 mx-2 text-justify ${
@@ -97,25 +93,25 @@ const Question: React.FC<QuestionType> = ({
 
       <div
         onClick={() => handleAnswer("answer_1", options.indexOf(options[0]))}
-        className={`flex items-center gap-2 m-4 2xl:mx-6 p-2 hover:m-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer
+        className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer mt-4
         ${
           context?.darkMode
             ? `2xl:bg-green-200 2xl:hover:bg-green-300 text-slate-200 hover:text-slate-900 2xl:text-slate-900 ${
                 cheek.checked1 ? "text-slate-900" : ""
               }`
-            : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none"
+            : "2xl:hover:bg-green-200 text-slate-900"
         } 
         ${
           cheek.checked1
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 m-2 2xl:mx-2 text-xl"
-                  : "bg-green-200 m-2 2xl:mx-2 text-xl"
+                  ? "bg-green-200 2xl:bg-green-300 text-xl mx-2"
+                  : "bg-green-200 text-xl mx-2"
               }`
             : ` ${
                 context.darkMode
-                  ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 mx-4 2xl:mx-8 hover:2xl:mx-2 hover:text-xl"
-                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none mx-4 2xl:mx-8 hover:2xl:mx-2 hover:text-xl"
+                  ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 2xl:mx-6 mx-2"
+                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none hover:text-xl 2xl:mx-6 mx-2"
               }`
         }
         `}
@@ -132,10 +128,6 @@ const Question: React.FC<QuestionType> = ({
               : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900"
           } rounded-md transition-all`}
         />
-        {/* <FontAwesomeIcon
-          icon={faCarrot}
-          className=" apparea absolute h-6 ml-1 text-opacity-0 check-1 transition "
-        /> */}
         <label htmlFor="answer" className="cursor-pointer w-[100%]">
           {options[0]}
         </label>
@@ -143,23 +135,25 @@ const Question: React.FC<QuestionType> = ({
 
       <div
         onClick={() => handleAnswer("answer_2", options.indexOf(options[1]))}
-        className={`flex items-center gap-2 m-4 2xl:mx-6 p-2 hover:m-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer ${
+        className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer my-8
+        ${
           context?.darkMode
             ? `2xl:bg-green-200 2xl:hover:bg-green-300 text-slate-200 hover:text-slate-900 2xl:text-slate-900 ${
                 cheek.checked2 ? "text-slate-900" : ""
               }`
-            : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none"
-        }         ${
+            : "2xl:hover:bg-green-200 text-slate-900"
+        } 
+        ${
           cheek.checked2
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 m-2 2xl:mx-2 text-xl"
-                  : "bg-green-200 m-2 2xl:mx-2 text-xl"
+                  ? "bg-green-200 2xl:bg-green-300 text-xl mx-2"
+                  : "bg-green-200 text-xl mx-2"
               }`
             : ` ${
                 context.darkMode
-                  ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 mx-4 2xl:mx-8 hover:2xl:mx-2 hover:text-xl"
-                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none mx-4 2xl:mx-8 hover:2xl:mx-2 hover:text-xl"
+                  ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 2xl:mx-6 mx-2"
+                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none hover:text-xl 2xl:mx-6 mx-2"
               }`
         }
         `}
@@ -183,24 +177,25 @@ const Question: React.FC<QuestionType> = ({
 
       <div
         onClick={() => handleAnswer("answer_3", options.indexOf(options[2]))}
-        className={`flex items-center gap-2 m-4 2xl:mx-6 p-2 hover:m-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer ${
+        className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer mb-8
+        ${
           context?.darkMode
             ? `2xl:bg-green-200 2xl:hover:bg-green-300 text-slate-200 hover:text-slate-900 2xl:text-slate-900 ${
                 cheek.checked3 ? "text-slate-900" : ""
               }`
-            : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none"
+            : "2xl:hover:bg-green-200 text-slate-900"
         } 
         ${
           cheek.checked3
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 m-2 2xl:mx-2 text-xl"
-                  : "bg-green-200 m-2 2xl:mx-2 text-xl"
+                  ? "bg-green-200 2xl:bg-green-300 text-xl mx-2"
+                  : "bg-green-200 text-xl mx-2"
               }`
             : ` ${
                 context.darkMode
-                  ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 mx-4 2xl:mx-8 hover:2xl:mx-2 hover:text-xl"
-                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none mx-4 2xl:mx-8 hover:2xl:mx-2 hover:text-xl"
+                  ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 2xl:mx-6 mx-2"
+                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none hover:text-xl 2xl:mx-6 mx-2"
               }`
         }
         `}
@@ -224,24 +219,25 @@ const Question: React.FC<QuestionType> = ({
 
       <div
         onClick={() => handleAnswer("answer_4", options.indexOf(options[3]))}
-        className={`flex items-center gap-2 m-4 2xl:mx-6 p-2 hover:m-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer ${
+        className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer
+        ${
           context?.darkMode
             ? `2xl:bg-green-200 2xl:hover:bg-green-300 text-slate-200 hover:text-slate-900 2xl:text-slate-900 ${
                 cheek.checked4 ? "text-slate-900" : ""
               }`
-            : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none"
+            : "2xl:hover:bg-green-200 text-slate-900"
         } 
         ${
           cheek.checked4
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 m-2 2xl:mx-2 text-xl"
-                  : "bg-green-200 m-2 2xl:mx-2 text-xl"
+                  ? "bg-green-200 2xl:bg-green-300 text-xl mx-2"
+                  : "bg-green-200 text-xl mx-2"
               }`
             : ` ${
                 context.darkMode
-                  ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 mx-4 2xl:mx-8 hover:2xl:mx-2 hover:text-xl"
-                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none mx-4 2xl:mx-8 hover:2xl:mx-2 hover:text-xl"
+                  ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 2xl:mx-6 mx-2"
+                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none hover:text-xl 2xl:mx-6 mx-2"
               }`
         }
         `}
