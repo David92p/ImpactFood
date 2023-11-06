@@ -15,7 +15,7 @@ import {
 } from "./questionnaire/answers";
 import ResultType from "./questionnaire/resultType";
 
-//ALERT 
+//ALERT
 import AlertType from "./alert/alertType";
 
 export type {
@@ -28,5 +28,5 @@ export type {
   RegisterAnswer,
   AnswerResults,
   ResultType,
-  AlertType
+  AlertType,
 };

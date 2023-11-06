@@ -1,5 +1,3 @@
-// import { AnswerResults } from "..";
-
 import { Checked, RegisterAnswer } from "..";
 
 interface QuestionType {
@@ -16,7 +14,7 @@ interface QuestionType {
     correctAnswer: number,
     answer: number
   ) => void;
-  id?: string
+  id?: string;
 }
 
 export default QuestionType;
