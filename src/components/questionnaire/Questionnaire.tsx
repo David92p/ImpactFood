@@ -17,7 +17,6 @@ import { Alert, Loading, Question, Result } from "..";
 
 const Questionnaire: React.FC = () => {
   const context = useContext(CONTEXT);
-  //   const dispatch = useContext(DISPATCH);
 
   const [stateQuestionnaire, setStateQuestionnaire] =
     useState<StateQuestionnaire>(QUESTIONNAIRE_ENG);
@@ -38,8 +37,9 @@ const Questionnaire: React.FC = () => {
     setIsLoading(true);
     try {
       const randomIndices: number[] = [];
+      const max:number = stateQuestionnaire.questions.length
       while (randomIndices.length < 10) {
-        const index: number = Math.floor(Math.random() * 15);
+        const index: number = Math.floor(Math.random() * max);
         if (!randomIndices.includes(index)) randomIndices.push(index);
       }
       setRegister({ casualIndex: randomIndices, index: 0 });
@@ -47,31 +47,13 @@ const Questionnaire: React.FC = () => {
     } catch (error) {
       console.log("entrato nel catch", error);
     }
-  }, []);
+  }, [stateQuestionnaire.questions.length]);
 
   useEffect(() => {
-    context.language == "ENG"
-      ? setStateQuestionnaire(
-          (prevQuestionnaire: StateQuestionnaire): StateQuestionnaire => {
-            const { title, questions } = QUESTIONNAIRE_ENG;
-            return {
-              title,
-              questions,
-              counterQuestions: prevQuestionnaire.counterQuestions,
-            };
-          }
-        )
-      : setStateQuestionnaire(
-          (prevQuestionnaire: StateQuestionnaire): StateQuestionnaire => {
-            const { title, questions } = QUESTIONNAIRE_ITA;
-            return {
-              title,
-              questions,
-              counterQuestions: prevQuestionnaire.counterQuestions,
-            };
-          }
-        );
-  }, [context.language]);
+    setStateQuestionnaire(context.language == "ENG" 
+    ? { ...QUESTIONNAIRE_ENG, counterQuestions: stateQuestionnaire.counterQuestions } 
+    : { ...QUESTIONNAIRE_ITA, counterQuestions: stateQuestionnaire.counterQuestions })
+  }, [context.language, stateQuestionnaire.counterQuestions]);
 
   const handleNext = (register: Register) => {
     if (register.index == 9) {
