@@ -1,9 +1,10 @@
 import { createContext } from "react";
 import { StateGlobal } from "../datatypes";
 
+type Language = "ENG" | "ITA";
 type ActionType = "language" | "darkMode" | "toggleQuestionnaire";
 
-type Action = { type: ActionType; payload?: string };
+type Action = { type: ActionType; payload?: Language };
 type Dispatch = (action: Action) => void;
 
 export const initialState: StateGlobal = {
