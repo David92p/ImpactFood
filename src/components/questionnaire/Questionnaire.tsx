@@ -37,7 +37,7 @@ const Questionnaire: React.FC = () => {
     setIsLoading(true);
     try {
       const randomIndices: number[] = [];
-      const max:number = stateQuestionnaire.questions.length
+      const max: number = stateQuestionnaire.questions.length;
       while (randomIndices.length < 10) {
         const index: number = Math.floor(Math.random() * max);
         if (!randomIndices.includes(index)) randomIndices.push(index);
@@ -50,15 +50,23 @@ const Questionnaire: React.FC = () => {
   }, [stateQuestionnaire.questions.length]);
 
   useEffect(() => {
-    setStateQuestionnaire(context.language == "ENG" 
-    ? { ...QUESTIONNAIRE_ENG, counterQuestions: stateQuestionnaire.counterQuestions } 
-    : { ...QUESTIONNAIRE_ITA, counterQuestions: stateQuestionnaire.counterQuestions })
+    setStateQuestionnaire(
+      context.language == "ENG"
+        ? {
+            ...QUESTIONNAIRE_ENG,
+            counterQuestions: stateQuestionnaire.counterQuestions,
+          }
+        : {
+            ...QUESTIONNAIRE_ITA,
+            counterQuestions: stateQuestionnaire.counterQuestions,
+          }
+    );
   }, [context.language, stateQuestionnaire.counterQuestions]);
 
   const handleNext = (register: Register) => {
     if (register.index == 9) {
       const missingAnswers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-      answerResults.register.forEach((answer: RegisterAnswer) => {
+      answerResults.register.forEach((answer) => {
         if (missingAnswers.includes(answer.question_number)) {
           const i: number = missingAnswers.indexOf(answer.question_number);
           missingAnswers.splice(i, 1);
@@ -95,60 +103,43 @@ const Questionnaire: React.FC = () => {
   const checkAnswers = (
     checked: Checked,
     correctAnswer: number,
-    answer: number
+    userAnswer: number
   ) => {
-    const data = { ...answerResults };
-    let index_1 = 0;
+    let register: RegisterAnswer[] = [...answerResults.register];
+    let corrects: number[] = [...answerResults.corrects];
+    let incorrects: number[] = [...answerResults.incorrects];
 
-    while (index_1 <= data.register.length) {
-      if (data.register.length == 0) {
-        data.register.push({
+    const registerControl = register.find(
+      ({ question_number }): boolean | undefined =>
+        question_number == stateQuestionnaire.counterQuestions
+    );
+
+    registerControl
+      ? (register = register.map((answer: RegisterAnswer) =>
+          answer.question_number == stateQuestionnaire.counterQuestions
+            ? { ...answer, answers: checked }
+            : { ...answer }
+        ))
+      : register.push({
           question_number: stateQuestionnaire.counterQuestions,
           answers: checked,
         });
-        break;
-      } else if (data.register.length >= index_1) {
-        if (data.register.length == index_1) {
-          data.register.push({
-            question_number: stateQuestionnaire.counterQuestions,
-            answers: checked,
-          });
-          break;
-        } else if (
-          data.register[index_1].question_number ==
-          stateQuestionnaire.counterQuestions
-        ) {
-          data.register[index_1] = {
-            ...data.register[index_1],
-            answers: checked,
-          };
-          break;
-        }
-      }
-      index_1++;
-    }
 
-    if (correctAnswer == answer) {
-      if (data.incorrects.includes(stateQuestionnaire.counterQuestions)) {
-        data.incorrects = data.incorrects.filter(
-          (element: number) => element != stateQuestionnaire.counterQuestions
-        );
-      }
-      if (!data.corrects.includes(stateQuestionnaire.counterQuestions)) {
-        data.corrects.push(stateQuestionnaire.counterQuestions);
-      }
-    }
-    if (correctAnswer !== answer) {
-      if (data.corrects.includes(stateQuestionnaire.counterQuestions)) {
-        data.corrects = data.corrects.filter(
-          (element: number) => element != stateQuestionnaire.counterQuestions
-        );
-      }
-      if (!data.incorrects.includes(stateQuestionnaire.counterQuestions)) {
-        data.incorrects.push(stateQuestionnaire.counterQuestions);
-      }
-    }
-    setAnswerResults(data);
+    correctAnswer == userAnswer
+      ? ((incorrects = incorrects.filter(
+          (element: number) => element !== stateQuestionnaire.counterQuestions
+        )),
+        !corrects.includes(stateQuestionnaire.counterQuestions)
+          ? corrects.push(stateQuestionnaire.counterQuestions)
+          : null)
+      : ((corrects = corrects.filter(
+          (element: number) => element !== stateQuestionnaire.counterQuestions
+        )),
+        !incorrects.includes(stateQuestionnaire.counterQuestions)
+          ? incorrects.push(stateQuestionnaire.counterQuestions)
+          : null);
+
+    setAnswerResults({ corrects, incorrects, register });
   };
 
   return (
