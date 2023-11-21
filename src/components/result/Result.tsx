@@ -104,7 +104,7 @@ const Result: React.FC<ResultType> = ({ corrects }) => {
                 </>
               ) : corrects.length == 0 ? (
                 <FontAwesomeIcon
-                  icon={icon[0]}
+                  icon={icon[9]}
                   size="2xl"
                   style={{ color: "#0f172a" }}
                 />
