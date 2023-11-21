@@ -49,36 +49,18 @@ const Question: React.FC<QuestionType> = ({
   };
 
   useEffect(() => {
-    if (register) {
-      let i: number = 0;
-      while (i <= register.length) {
-        if (register.length == 0) {
-          setCheek({
-            checked1: false,
-            checked2: false,
-            checked3: false,
-            checked4: false,
-          });
-          break;
-        } else if (register.length >= i) {
-          if (register.length == i) {
-            setCheek({
-              checked1: false,
-              checked2: false,
-              checked3: false,
-              checked4: false,
-            });
-            break;
-          } else if (register[i].question_number == counterQuestion) {
-            setCheek(register[i].answers);
-            break;
-          }
-        }
-        i++;
-      }
-    }
+    const registerControl = register?.find(
+      ({ question_number }) => question_number == counterQuestion
+    );
+    registerControl
+      ? setCheek(registerControl.answers)
+      : setCheek({
+          checked1: false,
+          checked2: false,
+          checked3: false,
+          checked4: false,
+        });
   }, [counterQuestion, register]);
-
   return (
     <div
       className={`flex flex-col tracking-wider leading-loose sm:mx-0 rounded-xl mt-3 mx-2 text-justify ${
