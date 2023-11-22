@@ -14,7 +14,6 @@ interface QuestionType {
     correctAnswer: number,
     answer: number
   ) => void;
-  id?: string;
 }
 
 export default QuestionType;
