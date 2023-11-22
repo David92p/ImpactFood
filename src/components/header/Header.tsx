@@ -34,6 +34,7 @@ const Header: React.FC = () => {
         <input
           onClick={() => dispatch({ type: "darkMode" })}
           type="checkbox"
+          aria-label="set dark mode"
           className="sr-only peer "
         />
         <span className="flex justify-center items-center w-2/5 h-4/5 bg-slate-900 absolute rounded-full left-1 top-1 cursor-pointer peer-checked:bg-slate-200 peer-checked:left-8 transition-all duration-500">
