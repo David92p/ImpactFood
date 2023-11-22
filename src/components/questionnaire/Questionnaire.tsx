@@ -37,9 +37,9 @@ const Questionnaire: React.FC = () => {
     setIsLoading(true);
     try {
       const randomIndices: number[] = [];
-      const max: number = stateQuestionnaire.questions.length;
+      const totalQuestions: number = stateQuestionnaire.questions.length;
       while (randomIndices.length < 10) {
-        const index: number = Math.floor(Math.random() * max);
+        const index: number = Math.floor(Math.random() * totalQuestions);
         if (!randomIndices.includes(index)) randomIndices.push(index);
       }
       setRegister({ casualIndex: randomIndices, index: 0 });
@@ -157,66 +157,59 @@ const Questionnaire: React.FC = () => {
         >
           <div className="flex mt-4 mb-2 py-2 justify-around mx-2">
             <div
-              id="1"
-              className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300"
+              className={`flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full ${answerResults.register.find(({ question_number }) => question_number == 1) ? "bg-green-400" : "bg-green-200 opacity-50" }`}
             >
               1
             </div>
             <div
-              id="2"
-              className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300"
+              className={`flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full ${answerResults.register.find(({ question_number }) => question_number == 2) ? "bg-green-400" : "bg-green-200 opacity-50" }`}
             >
               2
             </div>
             <div
-              id="3"
-              className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300"
+              className={`flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full ${answerResults.register.find(({ question_number }) => question_number == 3) ? "bg-green-400" : "bg-green-200 opacity-50" }`}
             >
               3
             </div>
             <div
-              id="4"
-              className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300"
+              className={`flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full ${answerResults.register.find(({ question_number }) => question_number == 4) ? "bg-green-400" : "bg-green-200 opacity-50" }`}
             >
               4
             </div>
             <div
-              id="5"
-              className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300"
+              className={`flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full ${answerResults.register.find(({ question_number }) => question_number == 5) ? "bg-green-400" : "bg-green-200 opacity-50" }`}
             >
               5
             </div>
             <div
-              id="6"
-              className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300"
+              className={`flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full ${answerResults.register.find(({ question_number }) => question_number == 6) ? "bg-green-400" : "bg-green-200 opacity-50" }`}
             >
               6
             </div>
             <div
-              id="7"
-              className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300"
+              className={`flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full ${answerResults.register.find(({ question_number }) => question_number == 7) ? "bg-green-400" : "bg-green-200 opacity-50" }`}
             >
               7
             </div>
             <div
-              id="8"
-              className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300"
+              className={`flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full ${answerResults.register.find(({ question_number }) => question_number == 8) ? "bg-green-400" : "bg-green-200 opacity-50" }`}
             >
               8
             </div>
             <div
-              id="9"
-              className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300"
+              className={`flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full ${answerResults.register.find(({ question_number }) => question_number == 9) ? "bg-green-400" : "bg-green-200 opacity-50" }`}
             >
               9
             </div>
             <div
-              id="10"
-              className="flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full bg-green-300"
+              className={`flex items-center justify-center w-6 h-6 text-slate-900 p-4 font-bold rounded-full ${answerResults.register.find(({ question_number }) => question_number == 10) ? "bg-green-400" : "bg-green-200 opacity-50" }`}
             >
               10
             </div>
           </div>
+          {/* <div className="flex mt-4 mb-2 py-2 justify-around mx-2 border-2 border-red-500">
+
+          </div> */}
           <div className="flex flex-col-reverse sm:flex-row items-center justify-center sm:justify-around w-[100%] text-3xl font-extrabold">
             {stateQuestionnaire.title + stateQuestionnaire.counterQuestions}
             <button
@@ -254,7 +247,6 @@ const Questionnaire: React.FC = () => {
                   alert={alert?.toggle}
                   register={answerResults.register}
                   checkAnswers={checkAnswers}
-                  id={stateQuestionnaire.counterQuestions.toString()}
                 />
               )}
               {register && (
