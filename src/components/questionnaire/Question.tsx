@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import { CONTEXT } from "../../context";
 import { Checked, QuestionType } from "../../datatypes";
 
@@ -60,7 +59,7 @@ const Question: React.FC<QuestionType> = ({
 
       <div
         onClick={() => handleAnswer("checked1", options.indexOf(options[0]))}
-        className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer mt-4
+        className={`flex items-center gap-2 p-2 text-md font-bold transition-all rounded-lg cursor-pointer mt-4 hover:mx-2
         ${
           context?.darkMode
             ? `2xl:bg-green-200 2xl:hover:bg-green-300 text-slate-200 hover:text-slate-900 2xl:text-slate-900 ${
@@ -72,13 +71,13 @@ const Question: React.FC<QuestionType> = ({
           cheek.checked1
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 text-xl mx-2"
-                  : "bg-green-200 text-xl mx-2"
+                  ? "bg-green-200 2xl:bg-green-300 2xl:text-xl mx-2"
+                  : "bg-green-200 2xl:text-xl mx-2"
               }`
             : ` ${
                 context.darkMode
                   ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 2xl:mx-6 mx-2"
-                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none hover:text-xl 2xl:mx-6 mx-2"
+                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none 2xl:mx-6 mx-2"
               }`
         }
         `}
@@ -89,7 +88,7 @@ const Question: React.FC<QuestionType> = ({
           readOnly
           checked={cheek.checked1}
           value={options.indexOf(options[0])}
-          className={`h-7 w-10 2xl:w-7 hover:h-8 hover:w-12 2xl:hover:w-9 2xl:hover:h-9 cursor-pointer ${
+          className={`h-7 w-10 2xl:w-7 cursor-pointer ${
             context.darkMode
               ? "bg-slate-100 hover:border-2 hover:border-slate-900"
               : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900"
@@ -102,7 +101,7 @@ const Question: React.FC<QuestionType> = ({
 
       <div
         onClick={() => handleAnswer("checked2", options.indexOf(options[1]))}
-        className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer my-8
+        className={`flex items-center gap-2 p-2 text-md font-bold transition-all rounded-lg cursor-pointer my-8 hover:mx-2
         ${
           context?.darkMode
             ? `2xl:bg-green-200 2xl:hover:bg-green-300 text-slate-200 hover:text-slate-900 2xl:text-slate-900 ${
@@ -114,13 +113,13 @@ const Question: React.FC<QuestionType> = ({
           cheek.checked2
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 text-xl mx-2"
-                  : "bg-green-200 text-xl mx-2"
+                  ? "bg-green-200 2xl:bg-green-300 2xl:text-xl mx-2"
+                  : "bg-green-200 2xl:text-xl mx-2"
               }`
             : ` ${
                 context.darkMode
                   ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 2xl:mx-6 mx-2"
-                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none hover:text-xl 2xl:mx-6 mx-2"
+                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none 2xl:mx-6 mx-2"
               }`
         }
         `}
@@ -131,7 +130,7 @@ const Question: React.FC<QuestionType> = ({
           readOnly
           checked={cheek.checked2}
           value={options.indexOf(options[1])}
-          className={`h-7 w-10 2xl:w-7 hover:h-8 hover:w-12 2xl:hover:w-9 2xl:hover:h-9 cursor-pointer ${
+          className={`h-7 w-10 2xl:w-7 cursor-pointer ${
             context.darkMode
               ? "bg-slate-100 hover:border-2 hover:border-slate-900"
               : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900"
@@ -144,7 +143,7 @@ const Question: React.FC<QuestionType> = ({
 
       <div
         onClick={() => handleAnswer("checked3", options.indexOf(options[2]))}
-        className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer mb-8
+        className={`flex items-center gap-2 p-2 text-md font-bold transition-all rounded-lg cursor-pointer mb-8 hover:mx-2
         ${
           context?.darkMode
             ? `2xl:bg-green-200 2xl:hover:bg-green-300 text-slate-200 hover:text-slate-900 2xl:text-slate-900 ${
@@ -156,13 +155,13 @@ const Question: React.FC<QuestionType> = ({
           cheek.checked3
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 text-xl mx-2"
-                  : "bg-green-200 text-xl mx-2"
+                  ? "bg-green-200 2xl:bg-green-300 2xl:text-xl mx-2"
+                  : "bg-green-200 2xl:text-xl mx-2"
               }`
             : ` ${
                 context.darkMode
                   ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 2xl:mx-6 mx-2"
-                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none hover:text-xl 2xl:mx-6 mx-2"
+                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none 2xl:mx-6 mx-2"
               }`
         }
         `}
@@ -173,7 +172,7 @@ const Question: React.FC<QuestionType> = ({
           readOnly
           checked={cheek.checked3}
           value={options.indexOf(options[2])}
-          className={`h-7 w-10 2xl:w-7 hover:h-8 hover:w-12 2xl:hover:w-9 2xl:hover:h-9 cursor-pointer ${
+          className={`h-7 w-10 2xl:w-7 cursor-pointer ${
             context.darkMode
               ? "bg-slate-100 hover:border-2 hover:border-slate-900"
               : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900"
@@ -186,7 +185,7 @@ const Question: React.FC<QuestionType> = ({
 
       <div
         onClick={() => handleAnswer("checked4", options.indexOf(options[3]))}
-        className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer mb-4
+        className={`flex items-center gap-2 p-2 text-md font-bold transition-all rounded-lg cursor-pointer mb-4 hover:mx-2
         ${
           context?.darkMode
             ? `2xl:bg-green-200 2xl:hover:bg-green-300 text-slate-200 hover:text-slate-900 2xl:text-slate-900 ${
@@ -198,13 +197,13 @@ const Question: React.FC<QuestionType> = ({
           cheek.checked4
             ? `${
                 context.darkMode
-                  ? "bg-green-200 2xl:bg-green-300 text-xl mx-2"
-                  : "bg-green-200 text-xl mx-2"
+                  ? "bg-green-200 2xl:bg-green-300 2xl:text-xl mx-2"
+                  : "bg-green-200 2xl:text-xl mx-2"
               }`
             : ` ${
                 context.darkMode
                   ? "2xl:bg-green-200 hover:bg-green-200 hover:2xl:bg-green-300 text-slate-200 2xl:text-slate-900 hover:text-slate-900 2xl:mx-6 mx-2"
-                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none hover:text-xl 2xl:mx-6 mx-2"
+                  : "2xl:hover:bg-green-200 text-slate-900 hover:border-2 hover:border-slate-900 2xl:border-none 2xl:mx-6 mx-2"
               }`
         }
         `}
@@ -215,7 +214,7 @@ const Question: React.FC<QuestionType> = ({
           readOnly
           checked={cheek.checked4}
           value={options.indexOf(options[3])}
-          className={`h-7 w-10 2xl:w-7 hover:h-8 hover:w-12 2xl:hover:w-9 2xl:hover:h-9 cursor-pointer ${
+          className={`h-7 w-10 2xl:w-7 cursor-pointer ${
             context.darkMode
               ? "bg-slate-100 hover:border-2 hover:border-slate-900"
               : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900"
