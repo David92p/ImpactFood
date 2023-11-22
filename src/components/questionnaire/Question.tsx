@@ -11,7 +11,6 @@ const Question: React.FC<QuestionType> = ({
   alert,
   register,
   checkAnswers,
-  id,
 }) => {
   const context = useContext(CONTEXT);
 
@@ -23,29 +22,15 @@ const Question: React.FC<QuestionType> = ({
   });
 
   const handleAnswer = async (name: string, value: number) => {
-    let data = {
+    const defaultCheek: Checked = {
       checked1: false,
       checked2: false,
       checked3: false,
       checked4: false,
     };
-
-    if (name == "answer_1") {
-      data = { ...data, checked1: !data.checked1 };
-    } else if (name == "answer_2") {
-      data = { ...data, checked2: !data.checked2 };
-    } else if (name == "answer_3") {
-      data = { ...data, checked3: !data.checked3 };
-    } else if (name == "answer_4") {
-      data = { ...data, checked4: !data.checked4 };
-    }
-    if (id) {
-      const element = document.getElementById(id);
-      element?.remove();
-    }
-
-    setCheek(data);
-    checkAnswers && checkAnswers(data, answer, value);
+    setCheek({ ...defaultCheek, [name]: true });
+    checkAnswers &&
+      checkAnswers({ ...defaultCheek, [name]: true }, answer, value);
   };
 
   useEffect(() => {
@@ -74,7 +59,7 @@ const Question: React.FC<QuestionType> = ({
       </div>
 
       <div
-        onClick={() => handleAnswer("answer_1", options.indexOf(options[0]))}
+        onClick={() => handleAnswer("checked1", options.indexOf(options[0]))}
         className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer mt-4
         ${
           context?.darkMode
@@ -116,7 +101,7 @@ const Question: React.FC<QuestionType> = ({
       </div>
 
       <div
-        onClick={() => handleAnswer("answer_2", options.indexOf(options[1]))}
+        onClick={() => handleAnswer("checked2", options.indexOf(options[1]))}
         className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer my-8
         ${
           context?.darkMode
@@ -158,7 +143,7 @@ const Question: React.FC<QuestionType> = ({
       </div>
 
       <div
-        onClick={() => handleAnswer("answer_3", options.indexOf(options[2]))}
+        onClick={() => handleAnswer("checked3", options.indexOf(options[2]))}
         className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer mb-8
         ${
           context?.darkMode
@@ -200,7 +185,7 @@ const Question: React.FC<QuestionType> = ({
       </div>
 
       <div
-        onClick={() => handleAnswer("answer_4", options.indexOf(options[3]))}
+        onClick={() => handleAnswer("checked4", options.indexOf(options[3]))}
         className={`flex items-center gap-2 p-2 text-md hover:text-xl font-bold transition-all rounded-lg hover:font-extrabold cursor-pointer mb-4
         ${
           context?.darkMode
