@@ -90,8 +90,8 @@ const Question: React.FC<QuestionType> = ({
           value={options.indexOf(options[0])}
           className={`h-7 w-10 2xl:w-7 cursor-pointer ${
             context.darkMode
-              ? "bg-slate-100 hover:border-2 hover:border-slate-900"
-              : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900"
+              ? "bg-slate-100 hover:border-2 hover:border-slate-900 accent-green-400"
+              : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900 accent-green-300"
           } rounded-md transition-all`}
         />
         <label htmlFor="answer" className="cursor-pointer w-[100%]">
@@ -132,8 +132,8 @@ const Question: React.FC<QuestionType> = ({
           value={options.indexOf(options[1])}
           className={`h-7 w-10 2xl:w-7 cursor-pointer ${
             context.darkMode
-              ? "bg-slate-100 hover:border-2 hover:border-slate-900"
-              : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900"
+              ? "bg-slate-100 hover:border-2 hover:border-slate-900 accent-green-400"
+              : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900 accent-green-300"
           } rounded-md transition-all`}
         />
         <label htmlFor="answer" className="cursor-pointer w-[100%]">
@@ -174,8 +174,8 @@ const Question: React.FC<QuestionType> = ({
           value={options.indexOf(options[2])}
           className={`h-7 w-10 2xl:w-7 cursor-pointer ${
             context.darkMode
-              ? "bg-slate-100 hover:border-2 hover:border-slate-900"
-              : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900"
+              ? "bg-slate-100 hover:border-2 hover:border-slate-900 accent-green-400"
+              : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900 accent-green-300"
           } rounded-md transition-all`}
         />
         <label htmlFor="answer" className="cursor-pointer w-[100%]">
@@ -216,8 +216,8 @@ const Question: React.FC<QuestionType> = ({
           value={options.indexOf(options[3])}
           className={`h-7 w-10 2xl:w-7 cursor-pointer ${
             context.darkMode
-              ? "bg-slate-100 hover:border-2 hover:border-slate-900"
-              : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900"
+              ? "bg-slate-100 hover:border-2 hover:border-slate-900 accent-green-400"
+              : "bg-green-200 hover:bg-green-300 2xl:bg-green-300 hover:border-2 hover:border-slate-900 accent-green-300"
           } rounded-md transition-all`}
         />
         <label htmlFor="answer" className="cursor-pointer w-[100%]">
